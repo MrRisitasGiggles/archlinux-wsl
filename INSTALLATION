@@ -9,7 +9,6 @@ pacman --sync --refresh --sysupgrade
 pacman --sync base base-devel
 
 passwd
-
 useradd -m -G wheel -s /bin/bash <username>
 passwd <username>
 
@@ -21,3 +20,8 @@ sudo pacman --sync core/python3
 sudo pacman --sync python-setuptools python-pip python-pipx sqlite xz tk
 sudo pacman --sync extra/neovim extra/python-pynvim
 
+sudo pacman --sync extra/nodejs
+sudo pacman --sync extra/npm
+sudo pacman --sync extra/tmux
+sudo pacman --sync extra/btop
+sudo pacman --sync extra/byobu
