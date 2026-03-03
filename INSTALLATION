@@ -9,8 +9,9 @@ pacman --sync --refresh --sysupgrade
 pacman --sync base base-devel
 
 passwd
-useradd -m -G wheel -s /bin/bash warren
-passwd
+
+useradd -m -G wheel -s /bin/bash <username>
+passwd <username>
 
 pacman --sync sudo
 
@@ -18,3 +19,5 @@ sudo pacman --sync extra/ruby-yard
 sudo pacman --sync git openssh curl
 sudo pacman --sync core/python3
 sudo pacman --sync python-setuptools python-pip python-pipx sqlite xz tk
+sudo pacman --sync extra/neovim extra/python-pynvim
+
