@@ -1,0 +1,20 @@
+wsl --set-default-version 2
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+wsl --install -d Arch
+
+pacman-key --init
+pacman-key --populate archlinux
+
+pacman --sync --refresh --sysupgrade
+pacman --sync base base-devel
+
+passwd
+useradd -m -G wheel -s /bin/bash warren
+passwd
+
+pacman --sync sudo
+
+sudo pacman --sync extra/ruby-yard
+sudo pacman --sync git openssh curl
+sudo pacman --sync core/python3
+sudo pacman --sync python-setuptools python-pip python-pipx sqlite xz tk
