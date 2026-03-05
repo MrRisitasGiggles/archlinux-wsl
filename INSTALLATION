@@ -26,6 +26,13 @@ sudo pacman --sync extra/tmux
 sudo pacman --sync extra/btop
 sudo pacman --sync extra/byobu
 
+sudo pacman -S mkinitcpio
+sudo pacman -S linux
+pacman -Q linux
+sudo pacman -S linux
+sudo rm /etc/mkinitcpio.d/linux.preset
+sudo mkinitcpio -P
+
 mkdir ~/Documents # Text, PDF, and office documents.
 mkdir ~/Downloads # Temporary downloads.
 mkdir ~/Projects # Source code, scripts, and project-specific files.
@@ -35,3 +42,10 @@ mkdir ~/.config # User-specific configuration files (hidden).
 mkdir ~/Pictures
 mkdir ~/Videos
 mkdir ~/Music
+
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+yay -S plymouth
+sudo nano /etc/mkinitcpio.conf
+HOOKS=(base udev plymouth ... autodetect ... filesystems)
+sudo mkinitcpio -P
