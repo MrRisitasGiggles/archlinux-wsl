@@ -29,7 +29,7 @@ sudo pacman --sync extra/byobu
 mkdir ~/Documents # Text, PDF, and office documents.
 mkdir ~/Downloads # Temporary downloads.
 mkdir ~/Projects # Source code, scripts, and project-specific files.
-mkdir ~/local/bin # Personal scripts and executables.
+mkdir ~/bin # Personal scripts and executables.
 mkdir ~/opt # Manually installed, third-party software.
 mkdir ~/.config # User-specific configuration files (hidden).
 mkdir ~/Pictures
