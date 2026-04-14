@@ -1,0 +1,32 @@
+[Unit]
+Description=Run LLaMA.cpp container
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+RestartSec=59s
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run --rm --name %n \
+ -p 8080:8080 \
+ --network=host \
+ --device /dev/kfd \
+ --device /dev/dri \
+ -e HSA_OVERRIDE_GFX_VERSION=10.3.0 \
+ -v /home/werhner/.models:/models \
+ rocm/llama.cpp:llama.cpp-b6652.amd0_rocm7.0.0_ubuntu24.04_server \
+ -m /models/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning.i1-Q6_K.gguf \
+ #-m /models/Qwen3.5-9B-Claude-4.6-OS-AV-H-UNCENSORED-THINK-D_AU-IQ3_M-imat.gguf \
+ --host 0.0.0.0 \
+ --port 8080 \
+ #--cache-type-k q4_0 \
+ #--cache-type-v q4_0 \
+ --ctx-size 8192 \
+ --rope-scaling yarn \
+ --rope-scale 2 \
+ --n-gpu-layers 32
+
+
+[Install]
+WantedBy=multi-user.target
